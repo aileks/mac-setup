@@ -31,8 +31,7 @@ yabai -m config                                 \
     mouse_drop_action            swap           \
     external_bar                 all:40:0
 
-yabai -m rule --add app='Zoom Workplace' manage=off
-
+# this requires JankyBorders https://github.com/FelixKratz/JankyBorders
 borders active_color=0xffe64553 inactive_color=0xff4c4f69 width=6.0 &
 
 echo "yabai configuration loaded..."
