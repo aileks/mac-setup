@@ -41,5 +41,6 @@ shift + ctrl - 7 : yabai -m window --space  7
 cmd + shift - space : yabai -m window --toggle float --grid 6:6:1:1:4:4
 
 # apps
-ctrl - return: open -n -a "WezTerm.app"
+ctrl - return: open -n -a "Ghostty.app"
 ctrl + shift - w: open -a "Arc.app"
+ctrl + shift - v: open -a "Zed Preview.app"
