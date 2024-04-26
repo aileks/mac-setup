@@ -5,3 +5,4 @@ window-decoration = false
 background-opacity = 0.9
 confirm-close-surface = false
 macos-option-as-alt = true
+quit-after-last-window-closed = false
