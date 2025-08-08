@@ -2,7 +2,6 @@
   {
     "context": "Editor && !VimControl",
     "bindings": {
-      "cmd-shift-k": "editor::CutToEndOfLine",
       "cmd-up": "editor::MoveToStartOfParagraph",
       "cmd-down": "editor::MoveToEndOfParagraph",
       "cmd-j": "editor::JoinLines",

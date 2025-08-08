@@ -1,10 +1,17 @@
 {
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gemini-2.5-pro"
+    },
+    "always_allow_tool_actions": true
+  },
   "show_edit_predictions": true,
   "telemetry": {
     "metrics": false,
     "diagnostics": false
   },
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "theme": "Gruvbox Dark Hard",
   "features": {
     "edit_prediction_provider": "zed"
@@ -13,17 +20,17 @@
     "mute_on_join": true
   },
   "autosave": "on_focus_change",
-  "ui_font_size": 18,
-  "ui_font_family": "SF Pro",
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "ui_font_size": 16,
   "agent_font_size": 16,
-  "buffer_font_size": 18,
+  "buffer_font_size": 16,
   "buffer_font_family": "AdwaitaMono Nerd Font Mono",
   "buffer_line_height": "standard",
   "preferred_line_length": 100,
   "soft_wrap": "preferred_line_length",
   "restore_on_startup": "none",
   "ensure_final_newline_on_save": true,
-  "format_on_save": "on",
   "tabs": {
     "git_status": true,
     "file_icons": true,
@@ -54,12 +61,12 @@
         "source.fixAll.eslint": true
       }
     },
-    "Ruby": {
-      "language_servers": ["ruby-lsp", "rubocop", "!solargraph"]
-    },
     "Python": {
-      "show_edit_predictions": false,
-      "language_servers": ["pyright", "ruff"],
+      "show_edit_predictions": true,
+      "language_servers": [
+        "pyright",
+        "ruff"
+      ],
       "format_on_save": {
         "language_server": {
           "name": "ruff"
@@ -86,20 +93,10 @@
         "settings": {
           "lineLength": 88,
           "lint": {
-            "extendSelect": ["I"]
+            "extendSelect": [
+              "I"
+            ]
           }
-        }
-      }
-    },
-    "rubocop": {
-      "initialization_options": {
-        "safeAutocorrect": false
-      }
-    },
-    "ruby-lsp": {
-      "initialization_options": {
-        "enabledFeatures": {
-          "diagnostics": false
         }
       }
     },

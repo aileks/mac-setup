@@ -102,7 +102,7 @@ CASK_APPS=(
     "protonvpn"
     "proton-mail"
     "proton-drive"
-    "zen"
+    "brave-browser"
     "notesnook"
     "font-adwaita"
     "font-adwaita-mono-nerd-font"
