@@ -1,0 +1,11 @@
+alt - return: open -a "Ghostty"
+alt - f: open -a "Finder"
+alt - w: open -a "Zen"
+alt - z: open -a "Zed Preview"
+alt - y: open -a "FreeTube" --args --use-angle=gl
+alt - s: open -a "Signal" --args --use-angle=gl
+alt - m: open -a "Deezer" --args --use-angle=gl
+alt - d: open -a "Element" --args --use-angle=gl
+alt - n: open -a "Notesnook" --args --use-angle=gl
+
+ctrl + shift - r : skhd --restart-service

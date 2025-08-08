@@ -1,0 +1,68 @@
+# Path
+export PATH="$PATH:$HOME/.local/bin:$HOME/.spicetify"
+
+# Path to OMZ installation.
+export ZSH="$HOME/.Oh-My-Zsh"
+
+# Env variables
+export EDITOR=zed
+export SUDO_EDITOR=nvim
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export GPG_TTY=$(tty)
+
+# Theme
+ZSH_THEME="refined"
+
+# Plugins
+plugins=(brew fast-syntax-highlighting fzf git poetry ruby zsh-autosuggestions)
+
+# OMZ script
+source $ZSH/Oh-My-Zsh.sh
+
+# Aliases
+alias ls="eza --color=always --icons --group-directories-first"
+alias la="eza -lah --color=always --icons --group-directories-first"
+alias lt="eza -aT --color=always --icons --group-directories-first"
+alias lh="eza -la --color=always --icons --group-directories-first | grep '^\.'"
+alias as="apt search"
+alias cp="ditto"
+alias rm="trash"
+alias c="clear"
+alias fzf="fzf --style full"
+alias dir="cd ~ && cd \$(find * -type d | fzf)"
+alias ff="fastfetch"
+alias vim="zed"
+
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# mise
+eval "$(mise activate zsh)"
+
+# fzf plugin config
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+export FZF_DEFAULT_OPTS="
+--color=bg+:#3c3836,bg:#282828,spinner:#fb4934,hl:#fabd2f
+--color=fg:#ebdbb2,header:#ebdbb2,info:#b8bb26,pointer:#fb4934
+--color=marker:#fb4934,fg+:#ebdbb2,prompt:#b8bb26,hl+:#fb4934"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

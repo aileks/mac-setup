@@ -1,0 +1,123 @@
+{
+  "show_edit_predictions": true,
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "icon_theme": "Material Icon Theme",
+  "theme": "Gruvbox Dark Hard",
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "calls": {
+    "mute_on_join": true
+  },
+  "autosave": "on_focus_change",
+  "ui_font_size": 18,
+  "ui_font_family": "SF Pro",
+  "agent_font_size": 16,
+  "buffer_font_size": 18,
+  "buffer_font_family": "AdwaitaMono Nerd Font Mono",
+  "buffer_line_height": "standard",
+  "preferred_line_length": 100,
+  "soft_wrap": "preferred_line_length",
+  "restore_on_startup": "none",
+  "ensure_final_newline_on_save": true,
+  "format_on_save": "on",
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+    "show_diagnostics": "errors"
+  },
+  "toolbar": {
+    "quick_actions": false,
+    "breadcrumbs": false
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 1000
+    }
+  },
+  "relative_line_numbers": true,
+  "languages": {
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph"]
+    },
+    "Python": {
+      "show_edit_predictions": false,
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": {
+        "language_server": {
+          "name": "ruff"
+        }
+      },
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 88,
+          "lint": {
+            "extendSelect": ["I"]
+          }
+        }
+      }
+    },
+    "rubocop": {
+      "initialization_options": {
+        "safeAutocorrect": false
+      }
+    },
+    "ruby-lsp": {
+      "initialization_options": {
+        "enabledFeatures": {
+          "diagnostics": false
+        }
+      }
+    },
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "strict"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "include_warnings": false,
+    "inline": {
+      "enabled": true,
+      "min_column": 40,
+      "max_severity": "warning"
+    }
+  }
+}

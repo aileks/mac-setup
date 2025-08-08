@@ -1,0 +1,10 @@
+term = xterm-256color
+shell-integration-features = no-cursor
+shell-integration = zsh
+theme = GruvboxDarkHard
+font-family = "BerkeleyMono Nerd Font"
+font-size = 20
+background-opacity = 0.8
+background-blur = true
+cursor-style = block
+confirm-close-surface = false
