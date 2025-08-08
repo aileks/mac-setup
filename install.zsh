@@ -10,7 +10,7 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 DOTFILES_REPO="https://github.com/aileks/macdots.git"
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/macdots"
 BACKUP_SUFFIX=".backup.$(date +%Y%m%d_%H%M%S)"
 
 log_info() {
@@ -332,10 +332,23 @@ cleanup_and_finish() {
     if [[ -f "${HOME}/.zshrc${BACKUP_SUFFIX}" ]]; then
         echo "  4. Your old .zshrc was backed up to: ${HOME}/.zshrc${BACKUP_SUFFIX}"
     fi
+
+    echo
+    log_warning "A REBOOT IS RECOMMENDED TO ENSURE ALL SYSTEM CHANGES TAKE EFFECT PROPERLY."
+    echo
+    read -p "Would you like to reboot now? (y/N): " -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        log_info "Rebooting in 5 seconds... (Press Ctrl+C to cancel)"
+        sleep 5
+        log_warning "Rebooting now!"
+        sudo reboot
+    else
+        log_info "Remember to reboot your system when convenient to complete the setup."
+    fi
 }
 
 main() {
-    echo -e "${GREEN}🚀 macOS Setup Script${NC}"
+    echo -e "${GREEN}macOS Setup Script${NC}"
     echo "This script will install development tools and configure your macOS environment."
     echo
 

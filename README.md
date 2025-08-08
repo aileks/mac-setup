@@ -22,5 +22,8 @@ cd macdots && ./install.sh
 
 ## Post-installation
 
+> [!NOTE]
+> It is recommended to do a complete reboot. If you do not, follow the steps below:
+
 1. Restart terminal or run `source ~/.zshrc`
 2. Run `brew doctor` to check for issues
