@@ -92,7 +92,12 @@
           "lineLength": 88,
           "lint": {
             "extendSelect": [
-              "I"
+              "I",
+              "E",
+              "W",
+              "UP",
+              "B",
+              "RUFF100"
             ]
           }
         }
