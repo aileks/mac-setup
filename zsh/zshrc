@@ -3,8 +3,7 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.spicetify"
 
 # Env variables
 export ZSH="$HOME/.Oh-My-Zsh"
-export EDITOR=nvim
-export SUDO_EDITOR=nvim
+export EDITOR=zed
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export GPG_TTY=$(tty)
 
