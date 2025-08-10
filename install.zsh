@@ -126,7 +126,7 @@ install_homebrew() {
 install_cli_tools() {
     show_progress "Installing command line tools"
 
-    local cli_tools=(git curl wget tmux mise ripgrep fzf tree jq gh bash eza zoxide)
+    local cli_tools=(git curl wget tmux mise ripgrep fzf tree btop jq gh bash eza zoxide)
     local failed_installs=()
 
     for tool in "${cli_tools[@]}"; do
