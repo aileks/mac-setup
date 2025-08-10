@@ -8,7 +8,7 @@ Automated setup script for macOS that installs essential software and configures
 > If there are any applications you do not want to install, be sure to comment them out in the `install.zsh` script.
 
 ```bash
-git clone https://github.com/aileks/macdots.git
+git clone https://github.com/aileks/mac-setup.git
 cd macdots && ./install.zsh
 ```
 
