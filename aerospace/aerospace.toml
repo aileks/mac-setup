@@ -63,7 +63,7 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-alt-shift-space = 'layout floating tiling'
+alt-shift-v = 'layout floating tiling'
 ctrl-r = 'reload-config'
 ctrl-shift-r = 'mode resize'
 

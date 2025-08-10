@@ -9,7 +9,7 @@ Automated setup script for macOS that installs essential software and configures
 
 ```bash
 git clone https://github.com/aileks/macdots.git
-cd macdots && ./install.sh
+cd macdots && ./install.zsh
 ```
 
 ## Features
