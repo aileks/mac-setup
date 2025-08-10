@@ -10,7 +10,7 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 DOTFILES_REPO="https://github.com/aileks/macdots.git"
-DOTFILES_DIR="$HOME/macdots"
+DOTFILES_DIR="$HOME/.dotfiles"
 BACKUP_SUFFIX=".backup.$(date +%Y%m%d_%H%M%S)"
 
 log_info() {
@@ -54,7 +54,7 @@ wait_for_user() {
     read -p "Press Enter to continue..."
 }
 
-TOTAL_STEPS=8
+TOTAL_STEPS=9
 CURRENT_STEP=0
 
 show_progress() {
@@ -103,7 +103,6 @@ install_homebrew() {
         log_info "Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-        # Add to PATH for Apple Silicon Macs
         if [[ $(uname -m) == "arm64" ]]; then
             if ! grep -q "/opt/homebrew/bin/brew" "$HOME/.zprofile" 2>/dev/null; then
                 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
@@ -206,22 +205,10 @@ install_gui_apps() {
     show_progress "Installing GUI applications"
 
     local cask_apps=(
-        "tg-pro"
-        "element"
-        "ghostty"
-        "zed"
-        "aerospace"
-        "deezer"
-        "freetube"
-        "protonvpn"
-        "proton-mail"
-        "proton-drive"
-        "brave-browser"
-        "notesnook"
-        "font-adwaita"
-        "font-adwaita-mono-nerd-font"
+        "tg-pro" "element" "ghostty" "zed" "aerospace" "deezer" "freetube"
+        "protonvpn" "proton-mail" "proton-drive" "brave-browser" "notesnook"
+        "font-adwaita" "font-adwaita-mono-nerd-font"
     )
-
     local failed_installs=()
 
     for app in "${cask_apps[@]}"; do
@@ -245,7 +232,9 @@ install_gui_apps() {
 }
 
 setup_dotfiles() {
-    show_progress "Setting up dotfiles"
+    if [[ "$TOTAL_STEPS" -gt 1 ]]; then
+      show_progress "Setting up dotfiles"
+    fi
 
     if [[ -d "$DOTFILES_DIR" ]]; then
         log_info "Dotfiles directory already exists, updating..."
@@ -255,6 +244,7 @@ setup_dotfiles() {
         else
             log_warning "Failed to update dotfiles, continuing with existing version"
         fi
+        cd - &>/dev/null
     else
         log_info "Cloning dotfiles repository..."
         if git clone "$DOTFILES_REPO" "$DOTFILES_DIR" &>/dev/null; then
@@ -264,8 +254,6 @@ setup_dotfiles() {
             return 1
         fi
     fi
-
-    cd "$DOTFILES_DIR"
 
     log_info "Creating symlinks for dotfiles..."
     local symlink_mappings=(
@@ -303,20 +291,39 @@ create_symlink() {
         log_info "Created directory: $dest_dir"
     fi
 
-    if [[ -L "$dest" ]]; then
+    if [[ -e "$dest" && ! -L "$dest" ]] || [[ -L "$dest" && ! -e "$dest" ]]; then
+         log_info "Backing up existing file/directory: $dest"
+         mv "$dest" "${dest}${BACKUP_SUFFIX}"
+    elif [[ -L "$dest" ]]; then
         log_info "Removing existing symlink: $dest"
         rm "$dest"
-    elif [[ -f "$dest" ]] || [[ -d "$dest" ]]; then
-        log_info "Backing up existing file/directory: $dest"
-        mv "$dest" "${dest}${BACKUP_SUFFIX}"
     fi
 
-    if ln -sf "$src" "$dest"; then
+    if ln -s "$src" "$dest"; then
         log_success "Created symlink: $dest -> $src"
     else
         log_error "Failed to create symlink: $dest -> $src"
         return 1
     fi
+}
+
+update_dotfiles() {
+    TOTAL_STEPS=1
+    CURRENT_STEP=0
+
+    show_progress "Updating and re-linking dotfiles"
+
+    if ! command_exists git; then
+        log_error "Git is not installed. Please install Git and try again, or run the full setup."
+        exit 1
+    fi
+    log_info "Prerequisite check passed: Git is installed."
+
+    setup_dotfiles
+
+    echo
+    log_success "Dotfiles have been updated and re-linked successfully."
+    log_info "Restart your terminal or run 'source ~/.zshrc' to apply changes."
 }
 
 cleanup_and_finish() {
@@ -331,7 +338,7 @@ cleanup_and_finish() {
     echo "  • Xcode Command Line Tools: $(xcode-select -p 2>/dev/null && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Homebrew: $(command_exists brew && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Oh-My-Zsh: $([[ -d "$HOME/.oh-my-zsh" ]] && echo "✓ Installed" || echo "✗ Not found")"
-    echo "  • Conda: $([[ -d "$HOME/.local/miniconda3" ]] && echo "✓ Installed" || echo "✗ Not found")"
+    echo "  • Conda: $(command_exists conda && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Dotfiles: $([[ -d "$DOTFILES_DIR" ]] && echo "✓ Configured" || echo "✗ Not found")"
     echo
     echo "Next steps:"
@@ -339,14 +346,16 @@ cleanup_and_finish() {
     echo "  2. Restart your terminal or run 'source ~/.zshrc' to apply changes"
     echo "  3. Configure any installed applications as needed"
 
-    if [[ -f "${HOME}/.zshrc${BACKUP_SUFFIX}" ]]; then
-        echo "  4. Your old .zshrc was backed up to: ${HOME}/.zshrc${BACKUP_SUFFIX}"
+    local backup_zshrc
+    backup_zshrc=$(find "$HOME" -maxdepth 1 -name ".zshrc.backup.*" -print -quit)
+    if [[ -n "$backup_zshrc" ]]; then
+        echo "  4. Your old .zshrc was backed up to: $backup_zshrc"
     fi
 
     echo
     log_warning "A REBOOT IS RECOMMENDED TO ENSURE ALL SYSTEM CHANGES TAKE EFFECT PROPERLY."
     echo
-    read -p "Would you like to reboot now? (y/N): " -r
+    read -r "?Would you like to reboot now? (y/N): "
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         log_info "Rebooting in 5 seconds... (Press Ctrl+C to cancel)"
         sleep 5
@@ -358,19 +367,34 @@ cleanup_and_finish() {
 }
 
 main() {
-    echo -e "${GREEN}macOS Setup Script${NC}"
-    echo "This script will install development tools and configure your macOS environment."
+    echo -e "${YELLOW}Which would you like to do?${NC}"
+    echo "  1) Perform a full macOS setup (installs tools, apps, and dotfiles)"
+    echo "  2) Update and symlink dotfiles only"
+    read -r "choice?Enter your choice (1 or 2): "
     echo
 
-    check_system
-    install_xcode_tools
-    install_homebrew
-    install_cli_tools
-    install_oh_my_zsh
-    install_miniconda
-    install_gui_apps
-    setup_dotfiles
-    cleanup_and_finish
+    case "$choice" in
+        1)
+            log_info "Starting full macOS setup..."
+            check_system
+            install_xcode_tools
+            install_homebrew
+            install_cli_tools
+            install_oh_my_zsh
+            install_miniconda
+            install_gui_apps
+            setup_dotfiles
+            cleanup_and_finish
+            ;;
+        2)
+            log_info "Starting dotfiles update..."
+            update_dotfiles
+            ;;
+        *)
+            log_error "Invalid choice. Please run the script again and enter 1 or 2."
+            exit 1
+            ;;
+    esac
 }
 
 main "$@"
