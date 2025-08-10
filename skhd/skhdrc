@@ -1,7 +1,7 @@
-alt - return: open -a "Ghostty"
+alt - t: open -a "Ghostty"
 alt - f: open -a "Finder"
-alt - w: open -a "Zen"
-alt - z: open -a "Zed Preview"
+alt - w: open -a "Brave Browser"
+alt - z: open -a "Zed"
 alt - y: open -a "FreeTube" --args --use-angle=gl
 alt - s: open -a "Signal" --args --use-angle=gl
 alt - m: open -a "Deezer" --args --use-angle=gl

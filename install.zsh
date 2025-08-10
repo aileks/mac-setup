@@ -158,6 +158,16 @@ install_oh_my_zsh() {
     else
         log_info "Oh-My-Zsh already installed"
     fi
+
+    if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+        git clone https://github.com/zsh-users/zsh-autosuggestions \
+            ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    fi
+
+    if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting" ]]; then
+        git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
+            "$HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting"
+    fi
 }
 
 install_miniconda() {
