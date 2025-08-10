@@ -126,7 +126,7 @@ install_homebrew() {
 install_cli_tools() {
     show_progress "Installing command line tools"
 
-    local cli_tools=(git curl wget tmux mise ripgrep fzf tree jq gh bash)
+    local cli_tools=(git curl wget tmux mise ripgrep fzf tree jq gh bash zoxide)
     local failed_installs=()
 
     for tool in "${cli_tools[@]}"; do
@@ -331,7 +331,7 @@ cleanup_and_finish() {
     echo "  • Xcode Command Line Tools: $(xcode-select -p 2>/dev/null && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Homebrew: $(command_exists brew && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Oh-My-Zsh: $([[ -d "$HOME/.oh-my-zsh" ]] && echo "✓ Installed" || echo "✗ Not found")"
-    echo "  • Conda: $(command_exists conda && echo "✓ Installed" || echo "✗ Not found")"
+    echo "  • Conda: $([[ -d "$HOME/.local/miniconda3" ]] && echo "✓ Installed" || echo "✗ Not found")"
     echo "  • Dotfiles: $([[ -d "$DOTFILES_DIR" ]] && echo "✓ Configured" || echo "✗ Not found")"
     echo
     echo "Next steps:"
