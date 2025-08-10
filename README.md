@@ -7,13 +7,13 @@ Automated setup script for macOS that installs essential software and configures
 > [!NOTE]
 > If there are any applications you do not want to install, be sure to comment them out in the `install.zsh` script.
 
-```bash
-git clone https://github.com/aileks/mac-setup.git
-cd macdots && ./install.zsh
+```sh
+zsh -c "$(curl -fsSL https://aileks.dev/mac)"
 ```
 
 ## Features
 
+- Run script from convenient URL
 - Bootstraps Homebrew if needed
 - Automatically installs essential applications
 - Backs up existing dotfile directories
