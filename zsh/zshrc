@@ -1,5 +1,5 @@
 # Path
-export PATH="$PATH:$HOME/.local/bin:$HOME/.spicetify"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.spicetify:/usr/local/opt/trash-cli/bin"
 
 # Env variables
 export ZSH="$HOME/.Oh-My-Zsh"
