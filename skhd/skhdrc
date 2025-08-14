@@ -1,4 +1,4 @@
-alt - return: open -a "Ghostty"
+alt - t: open -a "Ghostty"
 alt - f: open -a "Finder"
 alt - w: open -a "Brave Browser"
 alt - z: open -a "Zed"

@@ -2,7 +2,7 @@
 after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xff83a598 inactive_color=0xff92834 width=6.0',
+    "exec-and-forget '/bin/bash -c 'borders active_color=0xff83a598 inactive_color=0xff92834 width=6.0 &'",
 ]
 exec-on-workspace-change = [
     # '/bin/bash',
