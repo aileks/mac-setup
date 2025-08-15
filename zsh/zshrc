@@ -3,7 +3,8 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.spicetify:/usr/local/opt/trash-cli/bi
 
 # Env variables
 export ZSH="$HOME/.Oh-My-Zsh"
-export EDITOR=zed
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export GPG_TTY=$(tty)
 
