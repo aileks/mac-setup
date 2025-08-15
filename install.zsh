@@ -260,6 +260,8 @@ setup_dotfiles() {
         "zsh/zshrc:$HOME/.zshrc"
         "tmux/tmux.conf:$HOME/.tmux.conf"
         "aerospace:$HOME/.config/aerospace"
+        "borders:$HOME/.config/borders"
+        "fastfetch:$HOME/.config/fastfetch"
         "ghostty:$HOME/.config/ghostty"
         "sketchybar:$HOME/.config/sketchybar"
         "skhd:$HOME/.config/skhd"
