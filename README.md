@@ -9,21 +9,8 @@ Automated setup script for macOS that installs essential software and configures
 
 ```sh
 zsh -c "$(curl -fsSL https://aileks.dev/mac)"
+
+# Or clone the repo
+git clone https://github.com/aileks/mac-setup.git && cd ~/mac-setup
+./install.zsh
 ```
-
-## Features
-
-- Run script from convenient URL
-- Bootstraps Homebrew if needed
-- Automatically installs essential applications
-- Backs up existing dotfile directories
-- Works on Intel and Apple Silicon Macs
-- Colored output with status messages
-
-## Post-installation
-
-> [!NOTE]
-> It is recommended to do a complete reboot. If you do not, follow the steps below:
-
-1. Restart terminal or run `source ~/.zshrc`
-2. Run `brew doctor` to check for issues
