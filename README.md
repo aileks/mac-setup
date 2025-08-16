@@ -11,6 +11,6 @@ Automated setup script for macOS that installs essential software and configures
 zsh -c "$(curl -fsSL https://aileks.dev/mac)"
 
 # Or clone the repo
-git clone https://github.com/aileks/mac-setup.git && cd ~/mac-setup
+git clone https://github.com/aileks/mac-setup.git && cd mac-setup
 ./install.zsh
 ```
