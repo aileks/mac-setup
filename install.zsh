@@ -259,12 +259,11 @@ setup_dotfiles() {
     local symlink_mappings=(
         "zsh/zshrc:$HOME/.zshrc"
         "tmux/tmux.conf:$HOME/.tmux.conf"
-        "yabai:$HOME/.config/yabai"
+        "aerospace:$HOME/.config/aerospace"
         "borders:$HOME/.config/borders"
         "fastfetch:$HOME/.config/fastfetch"
         "ghostty:$HOME/.config/ghostty"
         "sketchybar:$HOME/.config/sketchybar"
-        "skhd:$HOME/.config/skhd"
         "zed/settings.json:$HOME/.config/zed/settings.json"
         "zed/keymap.json:$HOME/.config/zed/keymap.json"
     )
