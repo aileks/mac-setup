@@ -9,7 +9,7 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 NC='\033[0m'
 
-DOTFILES_REPO="https://github.com/aileks/mac-setup.git"
+DOTFILES_REPO="https://github.com/aileks/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
 BACKUP_SUFFIX=".backup.$(date +%Y%m%d_%H%M%S)"
 
