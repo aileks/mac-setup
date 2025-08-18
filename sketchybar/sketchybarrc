@@ -11,7 +11,7 @@ source "$CONFIG_DIR/icons.sh"
 ITEM_DIR="$CONFIG_DIR/items"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-FONT="SFMono Nerd Font"
+FONT="SF Pro"
 PADDINGS=3
 
 AEROSPACE_FOCUSED_MONITOR_NO=$(aerospace list-workspaces --focused)
@@ -74,10 +74,10 @@ sketchybar --default \
   popup.background.shadow.drawing=on \
   scroll_texts=on
 
+source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/brew.sh"
 
