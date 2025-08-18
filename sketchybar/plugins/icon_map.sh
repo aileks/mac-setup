@@ -153,6 +153,9 @@ function __icon_map() {
 	"Docker" | "Docker Desktop")
 		icon_result=":docker:"
 		;;
+	"Deezer")
+		icon_result=":deezer:"
+		;;
 	"GrandTotal" | "Receipts")
 		icon_result=":dollar:"
 		;;
@@ -467,6 +470,9 @@ function __icon_map() {
 		;;
 	"Proton Mail" | "Proton Mail Bridge")
 		icon_result=":proton_mail:"
+		;;
+	"Proton VPN")
+		icon_result=":proton_vpn:"
 		;;
 	"PrusaSlicer" | "SuperSlicer")
 		icon_result=":prusaslicer:"
