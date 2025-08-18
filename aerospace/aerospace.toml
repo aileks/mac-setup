@@ -2,7 +2,11 @@
 after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = []
-exec-on-workspace-change = []
+exec-on-workspace-change = [
+    '/bin/bash',
+    '-c',
+    '/usr/local/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+]
 
 start-at-login = true
 enable-normalization-flatten-containers = true
@@ -20,7 +24,7 @@ inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.bottom = 8
-outer.top = 8
+outer.top = 40
 outer.right = 8
 
 [mode.main.binding]
@@ -57,15 +61,15 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-alt-g = 'exec-and-forget open -a "Ghostty"'
+alt-t = 'exec-and-forget open -a "Ghostty"'
 alt-f = 'exec-and-forget open -a "Finder"'
 alt-w = 'exec-and-forget open -a "Brave Browser"'
 alt-z = 'exec-and-forget open -a "Zed"'
-alt-y = 'exec-and-forget open -a "FreeTube" --args --use-angle=gl'
-alt-s = 'exec-and-forget open -a "Signal" --args --use-angle=gl'
-alt-m = 'exec-and-forget open -a "Deezer" --args --use-angle=gl'
-alt-d = 'exec-and-forget open -a "Element" --args --use-angle=gl'
-alt-n = 'exec-and-forget open -a "Notesnook" --args --use-angle=gl'
+alt-y = 'exec-and-forget open -a "FreeTube"'
+alt-s = 'exec-and-forget open -a "Signal"'
+alt-m = 'exec-and-forget open -a "Deezer"'
+alt-d = 'exec-and-forget open -a "Element"'
+alt-n = 'exec-and-forget open -a "Notesnook"'
 
 ctrl-shift-h = ['join-with left']
 ctrl-shift-j = ['join-with down']
