@@ -8,7 +8,7 @@ FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused)"
 for sid in $(aerospace list-workspaces --all); do
     APPS=$(aerospace list-windows --workspace "$sid" --format "%{app-name}")
 
-    if [ -z "$APPS" ]; then
+    if [ -z "$APPS" ] && [ "$sid" != "$FOCUSED_WORKSPACE" ]; then
         sketchybar --set space.$sid drawing=off
     else
         ICONS=""
@@ -19,6 +19,10 @@ for sid in $(aerospace list-workspaces --all); do
             fi
         done <<< "$APPS"
         ICON=$(echo "$ICONS" | sed 's/ $//')
+
+        if [ "$sid" = "$FOCUSED_WORKSPACE" ] && [ -z "$APPS" ]; then
+            ICON="—"
+        fi
 
         if [ "$sid" = "$FOCUSED_WORKSPACE" ]; then
             sketchybar --set space.$sid drawing=on \
