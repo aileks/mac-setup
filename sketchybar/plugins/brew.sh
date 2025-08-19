@@ -4,6 +4,7 @@ source "$CONFIG_DIR/colors.sh"
 
 sketchybar --set "$NAME" label="Checking for updates..." \
                          icon=󰏖 \
+                         label.font="BerkeleyMono Nerd Font:SemiBold:14" \
                          icon.color=$BLUE \
                          label.color=$FG1
 
@@ -18,6 +19,7 @@ if [ "$COUNT" -eq 0 ]; then
 else
     sketchybar --set "$NAME" label="$COUNT Updates" \
                              icon=󰏖 \
+                             label.font="BerkeleyMono Nerd Font:SemiBold:14" \
                              icon.color=$ORANGE \
                              label.color=$YELLOW
 fi
