@@ -2,4 +2,4 @@
 
 source "$CONFIG_DIR/colors.sh"
 
-sketchybar --set "$NAME" icon="" icon.color="$ORANGE" label="$(date '+%a %b %d  %H:%M')"
+sketchybar --set "$NAME" icon="" icon.color="$CYAN" label="$(date '+%a %b %d  %H:%M')"
