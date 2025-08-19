@@ -5,7 +5,7 @@ export PATH="$HOME/.local/bin:$HOME/.spicetify:/usr/local/opt/trash-cli/bin:/opt
 export ZSH="$HOME/.Oh-My-Zsh"
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANPAGER="nvim +Man!"
 export GPG_TTY=$(tty)
 
 # Theme
