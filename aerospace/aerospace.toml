@@ -28,8 +28,8 @@ outer.top = 42
 outer.right = 6
 
 [mode.main.binding]
-ctrl-slash = 'layout tiles horizontal vertical'
-ctrl-comma = 'layout accordion horizontal vertical'
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
 
 alt-h = 'focus left'
 alt-j = 'focus down'
@@ -71,11 +71,6 @@ alt-m = 'exec-and-forget open -a "Deezer"'
 alt-d = 'exec-and-forget open -a "Element"'
 alt-n = 'exec-and-forget open -a "Notesnook"'
 
-ctrl-shift-h = ['join-with left']
-ctrl-shift-j = ['join-with down']
-ctrl-shift-k = ['join-with up']
-ctrl-shift-l = ['join-with right']
-
 alt-shift-r = 'mode resize'
 alt-shift-semicolon = 'mode service'
 
@@ -83,6 +78,10 @@ alt-shift-semicolon = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
+ctrl-h = ['join-with left']
+ctrl-j = ['join-with down']
+ctrl-k = ['join-with up']
+ctrl-l = ['join-with right']
 
 [mode.resize.binding]
 h = 'resize smart -20'
