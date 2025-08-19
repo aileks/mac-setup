@@ -63,7 +63,7 @@ alt-shift-9 = 'move-node-to-workspace 9'
 
 alt-t = 'exec-and-forget open -a "Ghostty"'
 alt-f = 'exec-and-forget open -a "Finder"'
-alt-w = 'exec-and-forget open -a "Brave Browser"'
+alt-w = 'exec-and-forget open -a "Safari"'
 alt-z = 'exec-and-forget open -a "Zed"'
 alt-y = 'exec-and-forget open -a "FreeTube"'
 alt-s = 'exec-and-forget open -a "Signal"'
