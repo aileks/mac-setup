@@ -27,7 +27,7 @@ update_front_app() {
     fi
 
     sketchybar --set "$NAME" icon="" \
-                             icon.color="$MAGENTA" \
+                             icon.color="$FG3" \
                              label="$DISPLAY_TEXT" \
                              label.color="$LABEL_COLOR" \
                              background.color="$BACKGROUND_1"

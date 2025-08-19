@@ -5,7 +5,7 @@ source "$CONFIG_DIR/colors.sh"
 sketchybar --set "$NAME" label="Checking for updates..." \
                          icon=󰏖 \
                          icon.color=$CYAN \
-                         label.color=$WHITE
+                         label.color=$FG1
 
 COUNT=$(brew outdated 2>/dev/null | wc -l | xargs)
 

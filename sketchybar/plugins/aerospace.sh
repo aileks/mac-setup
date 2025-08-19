@@ -26,14 +26,14 @@ for sid in $(aerospace list-workspaces --all); do
                                         label="$sid" \
                                         icon="$ICON" \
                                         icon.color=$MAGENTA \
-                                        label.color=$WHITE
+                                        label.color=$FG1
         else
             sketchybar --set space.$sid drawing=on \
                                         background.drawing=off \
                                         label="$sid" \
                                         icon="$ICON" \
-                                        icon.color=$GREY \
-                                        label.color=$GREY
+                                        icon.color=$BG3 \
+                                        label.color=$BG3
         fi
     fi
 done
