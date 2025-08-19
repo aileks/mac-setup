@@ -16,7 +16,7 @@ if [ "$SENDER" = "front_app_switched" ]; then
     DISPLAY_TEXT="${DISPLAY_TEXT:0:37}..."
   fi
 
-  sketchybar --set "$NAME" label="$DISPLAY_TEXT" \
+  sketchybar --set "$NAME" label="  $DISPLAY_TEXT" \
                           label.color="$LABEL_COLOR" \
                           background.color="$BACKGROUND_1"
 fi

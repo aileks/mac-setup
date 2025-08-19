@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source "$CONFIG_DIR/colors.sh"
 
@@ -19,19 +19,20 @@ sketchybar --bar height=32 \
                  y_offset=3
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="BerkeleyMono Nerd Font:Bold:16.0"
-  label.font="BerkeleyMono Nerd Font:Medium:14.0"
-  icon.color=$ICON_COLOR
-  label.color=$LABEL_COLOR
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-  background.corner_radius=6
-  background.height=24
+    padding_left=5
+    padding_right=5
+    icon.font="BerkeleyMono Nerd Font:Bold:16.0"
+    label.font="BerkeleyMono Nerd Font:Medium:14.0"
+    icon.color=$ICON_COLOR
+    label.color=$LABEL_COLOR
+    icon.padding_left=4
+    icon.padding_right=4
+    label.padding_left=4
+    label.padding_right=4
+    background.corner_radius=6
+    background.height=24
 )
+
 sketchybar --default "${default[@]}"
 
 sketchybar --add event aerospace_workspace_change
