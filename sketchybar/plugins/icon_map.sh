@@ -59,7 +59,7 @@ function __icon_map() {
     "Music")
         icon_result=":music:"
         ;;
-    "Notes")
+    "Notes" | "Notesnook")
         icon_result=":notes:"
         ;;
     "Numbers")
