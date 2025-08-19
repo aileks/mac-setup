@@ -23,17 +23,17 @@ for sid in $(aerospace list-workspaces --all); do
         if [ "$sid" = "$FOCUSED_WORKSPACE" ]; then
             sketchybar --set space.$sid drawing=on \
                                         background.drawing=on \
-                                        label="$sid" \
-                                        icon="$ICON" \
+                                        label="$ICON" \
+                                        icon="$sid" \
                                         icon.color=$MAGENTA \
                                         label.color=$FG1
         else
             sketchybar --set space.$sid drawing=on \
                                         background.drawing=off \
-                                        label="$sid" \
-                                        icon="$ICON" \
+                                        label="$ICON" \
+                                        icon="$sid" \
                                         icon.color=$BG3 \
-                                        label.color=$BG3
+                                        label.color=$BG4
         fi
     fi
 done
