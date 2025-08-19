@@ -45,12 +45,12 @@ for sid in $(aerospace list-workspaces --all); do
              background.height=24 \
              background.drawing=off \
              icon.font="sketchybar-app-font:Regular:16.0" \
-             label.font="SF Mono:Medium:14.0" \
+             label.font="AdwaitaMono Nerd Font Propo:Medium:14.0" \
              label="$sid" \
-             label.padding_left=8 \
+             label.padding_left=6 \
              label.padding_right=4 \
              icon.padding_left=4 \
-             icon.padding_right=8 \
+             icon.padding_right=6 \
              drawing=off \
              updates=when_shown \
              click_script="aerospace workspace $sid" \
@@ -65,48 +65,39 @@ sketchybar --add item aerospace_refresh left \
            --subscribe aerospace_refresh aerospace_workspace_change front_app_switched
 
 sketchybar --add item chevron left \
-           --set chevron icon= \
+           --set chevron icon= \
                          icon.color=$ORANGE \
                          label.drawing=off \
                          background.drawing=off
 
 sketchybar --add item front_app left \
-           --set front_app icon.drawing=off \
-                          script="$PLUGIN_DIR/front_app.sh" \
+           --set front_app script="$PLUGIN_DIR/front_app.sh" \
                           background.color=$BACKGROUND_1 \
-           --subscribe front_app front_app_switched
+                          update_freq=1 \
+           --subscribe front_app front_app_switched space_windows_change window_focus
 
 sketchybar --add item clock right \
            --set clock update_freq=10 \
-                      icon= \
-                      icon.color=$YELLOW \
                       script="$PLUGIN_DIR/clock.sh" \
                       background.color=$BACKGROUND_1
 
 sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
-                       icon.font="AdwaitaMono Nerd Font Propo:Bold:16.0" \
                        background.color=$BACKGROUND_1 \
            --subscribe volume volume_change
 
 sketchybar --add item brew right \
-           --set brew update_freq=3600 \
-                     icon=󰏖 \
-                     icon.color=$BLUE \
+           --set brew update_freq=43200 \
                      script="$PLUGIN_DIR/brew.sh" \
                      background.color=$BACKGROUND_1
 
 sketchybar --add item cpu right \
-           --set cpu update_freq=2 \
-                    icon=󰻠 \
-                    icon.color=$RED \
+           --set cpu update_freq=3 \
                     script="$PLUGIN_DIR/cpu.sh" \
                     background.color=$BACKGROUND_1
 
 sketchybar --add item ram right \
            --set ram update_freq=2 \
-                    icon=󰍛 \
-                    icon.color=$GREEN \
                     script="$PLUGIN_DIR/ram.sh" \
                     background.color=$BACKGROUND_1
 

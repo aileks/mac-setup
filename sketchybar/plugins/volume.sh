@@ -15,5 +15,5 @@ if [ "$SENDER" = "volume_change" ]; then
     *) ICON="󰖁"
   esac
 
-  sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%" icon.color="$MAGENTA"
+  sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%" icon.color="$CYAN"
 fi
