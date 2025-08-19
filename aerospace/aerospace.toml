@@ -76,8 +76,8 @@ ctrl-shift-j = ['join-with down']
 ctrl-shift-k = ['join-with up']
 ctrl-shift-l = ['join-with right']
 
-ctrl-shift-r = 'mode resize'
-ctrl-shift-semicolon = 'mode service'
+alt-shift-r = 'mode resize'
+alt-shift-semicolon = 'mode service'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
