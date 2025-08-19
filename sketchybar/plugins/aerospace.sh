@@ -1,35 +1,39 @@
 #!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/colors.sh"
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/plugins/icon_map.sh"
 
-FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
-WORKSPACES=$(aerospace list-workspaces --all)
+FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused)"
 
-for i in {1..10}; do
-  WORKSPACE_EXISTS=$(echo "$WORKSPACES" | grep -w "$i")
+for sid in $(aerospace list-workspaces --all); do
+    APPS=$(aerospace list-windows --workspace "$sid" --format "%{app-name}")
 
-  if [ -n "$WORKSPACE_EXISTS" ]; then
-    if [ "$i" = "$FOCUSED_WORKSPACE" ]; then
-      sketchybar --set space.$i icon.color=$GREEN \
-                              background.color=$BG1 \
-                              background.border_width=1 \
-                              background.border_color=$GREEN \
-                              drawing=on
+    if [ -z "$APPS" ]; then
+        sketchybar --set space.$sid drawing=off
     else
-      WINDOWS=$(aerospace list-windows --workspace "$i" --format '%{app-name}' 2>/dev/null | wc -l | xargs)
-      if [ "$WINDOWS" -gt 0 ]; then
-        sketchybar --set space.$i icon.color=$WHITE \
-                                background.color=$TRANSPARENT \
-                                background.border_width=0 \
-                                drawing=on
-      else
-        sketchybar --set space.$i icon.color=$GREY \
-                                background.color=$TRANSPARENT \
-                                background.border_width=0 \
-                                drawing=on
-      fi
+        ICONS=""
+        while IFS= read -r app; do
+            if [ -n "$app" ]; then
+                __icon_map "$app"
+                ICONS+="$icon_result "
+            fi
+        done <<< "$APPS"
+        ICON=$(echo "$ICONS" | sed 's/ $//')
+
+        if [ "$sid" = "$FOCUSED_WORKSPACE" ]; then
+            sketchybar --set space.$sid drawing=on \
+                                      background.drawing=on \
+                                      label="$sid" \
+                                      icon="$ICON" \
+                                      icon.color=$ORANGE \
+                                      label.color=$WHITE
+        else
+            sketchybar --set space.$sid drawing=on \
+                                      background.drawing=off \
+                                      label="$sid" \
+                                      icon="$ICON" \
+                                      icon.color=$GREY \
+                                      label.color=$GREY
+        fi
     fi
-  else
-    sketchybar --set space.$i drawing=off
-  fi
 done

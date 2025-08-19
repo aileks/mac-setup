@@ -449,7 +449,7 @@ function __icon_map() {
    "Notability")
         icon_result=":notability:"
         ;;
-   "Notes" | "备忘录" | "メモ")
+   "Notes" | "Notesnook")
         icon_result=":notes:"
         ;;
    "Notion")

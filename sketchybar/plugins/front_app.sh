@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/colors.sh"
+source "$CONFIG_DIR/colors.sh"
 
-FRONT_APP=$(aerospace list-windows --focused --format '%{app-name}' 2>/dev/null | head -n1)
+if [ "$SENDER" = "front_app_switched" ]; then
+  APP_NAME="$INFO"
+  WINDOW_TITLE=$(aerospace list-windows --focused --format "%{window-title}" 2>/dev/null)
 
-if [ -z "$FRONT_APP" ]; then
-  FRONT_APP=$(osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true' 2>/dev/null)
+  if [ -z "$WINDOW_TITLE" ] || [ "$WINDOW_TITLE" = "null" ] || [ "$WINDOW_TITLE" = "$APP_NAME" ]; then
+    DISPLAY_TEXT="$APP_NAME"
+  else
+    DISPLAY_TEXT="$APP_NAME - $WINDOW_TITLE"
+  fi
+
+  if [ ${#DISPLAY_TEXT} -gt 40 ]; then
+    DISPLAY_TEXT="${DISPLAY_TEXT:0:37}..."
+  fi
+
+  sketchybar --set "$NAME" label="$DISPLAY_TEXT" \
+                          label.color="$LABEL_COLOR" \
+                          background.color="$BACKGROUND_1"
 fi
-
-# Final fallback
-if [ -z "$FRONT_APP" ]; then
-  FRONT_APP="Desktop"
-fi
-
-sketchybar --set "$NAME" label="$FRONT_APP" label.color=$GREEN

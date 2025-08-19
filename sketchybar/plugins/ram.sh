@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/colors.sh"
+source "$CONFIG_DIR/colors.sh"
 
-MEMORY_PRESSURE=$(memory_pressure | grep "System-wide memory free percentage:" | awk '{print $5}' | sed 's/%//')
-MEMORY_USED=$((100 - MEMORY_PRESSURE))
+MEMORY_PRESSURE=$(memory_pressure | grep "System-wide memory free percentage" | awk '{print $5}' | sed 's/%//')
 
-if [ -z "$MEMORY_USED" ]; then
-  VM_STAT=$(vm_stat)
-  PAGES_FREE=$(echo "$VM_STAT" | grep "Pages free" | awk '{print $3}' | sed 's/\.//')
-  PAGES_ACTIVE=$(echo "$VM_STAT" | grep "Pages active" | awk '{print $3}' | sed 's/\.//')
-  PAGES_INACTIVE=$(echo "$VM_STAT" | grep "Pages inactive" | awk '{print $3}' | sed 's/\.//')
-  PAGES_SPECULATIVE=$(echo "$VM_STAT" | grep "Pages speculative" | awk '{print $3}' | sed 's/\.//')
-  PAGES_WIRED=$(echo "$VM_STAT" | grep "Pages wired down" | awk '{print $4}' | sed 's/\.//')
+if [ -z "$MEMORY_PRESSURE" ]; then
+    VM_STAT=$(vm_stat)
 
-  PAGES_TOTAL=$((PAGES_FREE + PAGES_ACTIVE + PAGES_INACTIVE + PAGES_SPECULATIVE + PAGES_WIRED))
-  PAGES_USED=$((PAGES_ACTIVE + PAGES_INACTIVE + PAGES_SPECULATIVE + PAGES_WIRED))
+    FREE_PAGES=$(echo "$VM_STAT" | grep "Pages free" | awk '{print $3}' | sed 's/\.//')
+    ACTIVE_PAGES=$(echo "$VM_STAT" | grep "Pages active" | awk '{print $3}' | sed 's/\.//')
+    INACTIVE_PAGES=$(echo "$VM_STAT" | grep "Pages inactive" | awk '{print $3}' | sed 's/\.//')
+    WIRED_PAGES=$(echo "$VM_STAT" | grep "Pages wired down" | awk '{print $4}' | sed 's/\.//')
+    COMPRESSED_PAGES=$(echo "$VM_STAT" | grep "Pages stored in compressor" | awk '{print $5}' | sed 's/\.//')
 
-  if [ "$PAGES_TOTAL" -gt 0 ]; then
-    MEMORY_USED=$((PAGES_USED * 100 / PAGES_TOTAL))
-  else
-    MEMORY_USED=0
-  fi
-fi
+    TOTAL_PAGES=$((FREE_PAGES + ACTIVE_PAGES + INACTIVE_PAGES + WIRED_PAGES + COMPRESSED_PAGES))
+    USED_PAGES=$((ACTIVE_PAGES + INACTIVE_PAGES + WIRED_PAGES + COMPRESSED_PAGES))
 
-if [ "$MEMORY_USED" -lt 60 ]; then
-  COLOR=$GREEN
-elif [ "$MEMORY_USED" -lt 80 ]; then
-  COLOR=$YELLOW
+    if [ "$TOTAL_PAGES" -gt 0 ]; then
+        MEMORY_USAGE=$((USED_PAGES * 100 / TOTAL_PAGES))
+    else
+        MEMORY_USAGE=0
+    fi
 else
-  COLOR=$RED
+    MEMORY_USAGE=$((100 - MEMORY_PRESSURE))
 fi
 
-sketchybar --set "$NAME" label="${MEMORY_USED}%" \
-                        icon.color="$COLOR" \
-                        label.color="$COLOR"
+if [ "$MEMORY_USAGE" -gt 80 ]; then
+    COLOR=$RED
+elif [ "$MEMORY_USAGE" -gt 60 ]; then
+    COLOR=$YELLOW
+else
+    COLOR=$GREEN
+fi
+
+sketchybar --set "$NAME" label="${MEMORY_USAGE}%" icon="󰍛" icon.color="$COLOR"
