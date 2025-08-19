@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-sketchybar --set "$NAME" icon="" label="$(date '+%a %b %d  %H:%M')"
+source "$CONFIG_DIR/colors.sh"
+
+sketchybar --set "$NAME" icon="" icon.color="$ORANGE" label="$(date '+%a %b %d  %H:%M')"

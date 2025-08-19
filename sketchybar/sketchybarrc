@@ -92,7 +92,7 @@ sketchybar --add item brew right \
                      background.color=$BACKGROUND_1
 
 sketchybar --add item cpu right \
-           --set cpu update_freq=3 \
+           --set cpu update_freq=2 \
                     script="$PLUGIN_DIR/cpu.sh" \
                     background.color=$BACKGROUND_1
 

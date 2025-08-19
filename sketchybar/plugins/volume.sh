@@ -15,5 +15,15 @@ if [ "$SENDER" = "volume_change" ]; then
     *) ICON="󰖁"
   esac
 
-  sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%" icon.color="$CYAN"
+  if [ "$VOLUME" -eq 0 ]; then
+    ICON_COLOR=$GREY
+  elif [ "$VOLUME" -lt 60 ]; then
+    ICON_COLOR=$MAGENTA
+  elif [ "$VOLUME" -gt 60 ]; then
+    ICON_COLOR=$YELLOW
+  else
+    ICON_COLOR=$ORANGE
+  fi
+
+  sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%" icon.color="$ICON_COLOR"
 fi
