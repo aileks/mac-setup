@@ -14,7 +14,7 @@ update_front_app() {
                              icon.padding_left=8 \
                              label="$APP_NAME" \
                              label.color="$FG1" \
-                             label.font="BerkeleyMono Nerd Font:Black:14" \
+                             label.font="BerkeleyMono Nerd Font:Bold:14" \
                              label.padding_right=8 \
                              background.color="$BG1"
 }
