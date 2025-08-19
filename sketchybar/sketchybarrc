@@ -1,87 +1,98 @@
 #!/usr/bin/env bash
 
-# ======================================================================================
-#                                 Modified from:
-# https://github.com/shubhpsd/mac-gruvbox-rice/blob/main/.config/sketchybar/sketchybarrc
-# ======================================================================================
+source "$HOME/.config/sketchybar/colors.sh"
 
-source "$CONFIG_DIR/colors.sh"
-source "$CONFIG_DIR/icons.sh"
+sketchybar --bar position=top \
+                 height=32 \
+                 margin=0 \
+                 y_offset=0 \
+                 corner_radius=0 \
+                 color=$BAR_COLOR \
+                 border_width=0 \
+                 blur_radius=0 \
+                 padding_left=10 \
+                 padding_right=10
 
-ITEM_DIR="$CONFIG_DIR/items"
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+sketchybar --default updates=when_shown \
+                     icon.font="SF Pro:Semibold:15.0" \
+                     icon.color=$ICON_COLOR \
+                     icon.padding_left=4 \
+                     icon.padding_right=4 \
+                     label.font="SF Pro:Semibold:14.0" \
+                     label.color=$LABEL_COLOR \
+                     label.padding_left=4 \
+                     label.padding_right=8 \
+                     padding_right=5 \
+                     padding_left=5 \
+                     background.color=$TRANSPARENT \
+                     background.border_width=0 \
+                     background.height=24
 
-FONT="SF Pro"
-PADDINGS=3
+WORKSPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 
-AEROSPACE_FOCUSED_MONITOR_NO=$(aerospace list-workspaces --focused)
-AEROSPACE_LIST_OF_WINDOWS_IN_FOCUSED_MONITOR=$(aerospace list-windows --workspace $AEROSPACE_FOCUSED_MONITOR_NO | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+for i in "${!WORKSPACE_ICONS[@]}"; do
+  sid=$((i + 1))
+  sketchybar --add item space.$sid left \
+             --set space.$sid associated_space=$sid \
+                              icon="${WORKSPACE_ICONS[i]}" \
+                              icon.padding_left=8 \
+                              icon.padding_right=8 \
+                              icon.color=$WHITE \
+                              label.drawing=off \
+                              script="$HOME/.config/sketchybar/plugins/aerospace.sh" \
+                              click_script="aerospace workspace $sid" \
+             --subscribe space.$sid aerospace_workspace_change
+done
 
-HELPER=git.felix.helper
-killall helper
-(cd $CONFIG_DIR/helper && make)
-$CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
+sketchybar --add event aerospace_workspace_change
 
-launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+sketchybar --add item separator_left left \
+           --set separator_left icon="|" \
+                               icon.color=$GREY \
+                               icon.padding_left=4 \
+                               icon.padding_right=4 \
+                               label.drawing=off
 
-sketchybar --bar \
-  height=36 \
-  color=$BAR_COLOR \
-  border_width=2 \
-  border_color=$BAR_BORDER_COLOR \
-  shadow=off \
-  position=top \
-  sticky=on \
-  x_offset=0 \
-  y_offset=0 \
-  padding_right=8 \
-  icon.padding_right=0 \
-  icon.padding_left=0 \
-  label.padding_right=0 \
-  label.padding_left=0 \
-  padding_left=8 \
-  margin=-2 \
-  topmost=window \
-  color=0x00000000 \
-  border_color=0x00000000 \
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=off \
+                          label.color=$GREEN \
+                          label.font="SF Pro:Bold:14.0" \
+                          script="$HOME/.config/sketchybar/plugins/front_app.sh" \
+           --subscribe front_app front_app_switched
 
+sketchybar --add item brew right \
+           --set brew icon=󰏓 \
+                      icon.color=$YELLOW \
+                      label.color=$WHITE \
+                      update_freq=1800 \
+                      script="$HOME/.config/sketchybar/plugins/brew.sh"
 
-"${bar[@]}"
+sketchybar --add item volume right \
+           --set volume icon=󰕾 \
+                        icon.color=$BLUE \
+                        label.color=$WHITE \
+                        script="$HOME/.config/sketchybar/plugins/volume.sh" \
+           --subscribe volume volume_change
 
-sketchybar --default \
-  updates=when_shown \
-  icon.font="$FONT:Regular:14" \
-  icon.color=$ICON_COLOR \
-  icon.padding_left=$PADDINS \
-  icon.padding_right=$PADDINGS \
-  label.font="$FONT:Semibold:13" \
-  label.color=$LABEL_COLOR \
-  label.padding_left=$PADDINGS \
-  label.padding_right=$PADDINGS \
-  label.shadow.drawing=on \
-  label.shadow.distance=2 \
-  label.shadow.color=0xff000000 \
-  padding_right=$PADDINGS \
-  padding_left=$PADDINGS \
-  background.height=26 \
-  background.corner_radius=9 \
-  background.border_width=2 \
-  popup.background.border_width=2 \
-  popup.background.corner_radius=9 \
-  popup.background.border_color=$POPUP_BORDER_COLOR \
-  popup.background.color=$POPUP_BACKGROUND_COLOR \
-  popup.blur_radius=20 \
-  popup.background.shadow.drawing=on \
-  scroll_texts=on
+sketchybar --add item cpu right \
+           --set cpu icon=󰻠 \
+                     icon.color=$RED \
+                     label.color=$WHITE \
+                     update_freq=2 \
+                     script="$HOME/.config/sketchybar/plugins/cpu.sh"
 
-source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/front_app.sh"
-source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/brew.sh"
+sketchybar --add item ram right \
+           --set ram icon=󰍛 \
+                     icon.color=$MAGENTA \
+                     label.color=$WHITE \
+                     update_freq=5 \
+                     script="$HOME/.config/sketchybar/plugins/ram.sh"
 
-sketchybar --hotload on
+sketchybar --add item clock right \
+           --set clock icon=󰅐 \
+                       icon.color=$ORANGE \
+                       label.color=$WHITE \
+                       update_freq=10 \
+                       script="$HOME/.config/sketchybar/plugins/clock.sh"
+
 sketchybar --update
-
-echo "sketchybar configuation loaded..."

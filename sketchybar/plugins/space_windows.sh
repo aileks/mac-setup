@@ -4,7 +4,7 @@ source "$CONFIG_DIR/colors.sh"
 
 AEROSPACE_FOCUSED_MONITOR=$(aerospace list-monitors --focused | awk '{print $1}')
 AEROSAPCE_WORKSPACE_FOCUSED_MONITOR=$(aerospace list-workspaces --monitor focused --empty no)
-AEROSPACE_EMPTY_WORKESPACE=$(aerospace list-workspaces --monitor focused --empty)
+AEROSPACE_EMPTY_WORKSPACE=$(aerospace list-workspaces --monitor focused --empty)
 
 reload_workspace_icon() {
   apps=$(aerospace list-windows --workspace "$@" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
@@ -41,7 +41,7 @@ if [ "$SENDER" = "aerospace_workspace_change" ]; then
     sketchybar --set space.$i display=$AEROSPACE_FOCUSED_MONITOR
   done
 
-  for i in $AEROSPACE_EMPTY_WORKESPACE; do
+  for i in $AEROSPACE_EMPTY_WORKSPACE; do
     sketchybar --set space.$i display=0
   done
 

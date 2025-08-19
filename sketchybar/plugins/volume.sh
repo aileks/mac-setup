@@ -1,35 +1,29 @@
 #!/usr/bin/env bash
 
-source "$CONFIG_DIR/icons.sh"
+source "$HOME/.config/sketchybar/colors.sh"
 
-volume_change() {
-  case $INFO in
-    [6-9][0-9]|100) ICON=$VOLUME_100 ;;
-    [3-5][0-9]) ICON=$VOLUME_66 ;;
-    [1-2][0-9]) ICON=$VOLUME_33 ;;
-    [1-9]) ICON=$VOLUME_10 ;;
-    *) ICON=$VOLUME_0 ;;
-  esac
+VOLUME=$(osascript -e "output volume of (get volume settings)")
+MUTED=$(osascript -e "output muted of (get volume settings)")
 
-  sketchybar --set volume_icon label=$ICON \
-             --set "$NAME" slider.percentage="$INFO"
-
-  sketchybar --animate tanh 30 --set "$NAME" slider.width=100
-
-  sleep 2
-
-  # Check if the volume was changed again while sleeping
-  FINAL_PERCENTAGE=$(sketchybar --query "$NAME" | jq -r ".slider.percentage")
-  if [ "$FINAL_PERCENTAGE" -eq "$INFO" ]; then
-    sketchybar --animate tanh 30 --set "$NAME" slider.width=0
+if [ "$MUTED" = "true" ]; then
+  ICON="󰖁"
+  COLOR=$GREY
+  LABEL="muted"
+else
+  if [ "$VOLUME" -eq 0 ]; then
+    ICON="󰕿"
+  elif [ "$VOLUME" -lt 30 ]; then
+    ICON="󰖀"
+  elif [ "$VOLUME" -lt 70 ]; then
+    ICON="󰕾"
+  else
+    ICON="󰕾"
   fi
-}
+  COLOR=$BLUE
+  LABEL="${VOLUME}%"
+fi
 
-mouse_clicked() {
-  osascript -e "set volume output volume $PERCENTAGE"
-}
-
-case "$SENDER" in
-  "volume_change") volume_change ;;
-  "mouse.clicked") mouse_clicked ;;
-esac
+sketchybar --set "$NAME" icon="$ICON" \
+                        icon.color="$COLOR" \
+                        label="$LABEL" \
+                        label.color="$COLOR"

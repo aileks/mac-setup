@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Gruvbox
 export BLACK=0xff282828
 export WHITE=0xffebdbb2
 export RED=0xfffb4934
@@ -15,7 +14,6 @@ export BG0=0xff282828
 export BG1=0xff3c3836
 export BG2=0xff504945
 
-# General bar colors
 export BAR_COLOR=$BG0
 export BAR_BORDER_COLOR=$BG2
 export BACKGROUND_1=$BG1

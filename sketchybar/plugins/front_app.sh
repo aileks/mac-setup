@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 
-AEROSPACE_FOCUSED_MONITOR_NO=$(aerospace list-workspaces --focused)
-AEROSPACE_LIST_OF_WINDOWS_IN_FOCUSED_MONITOR=$(aerospace list-windows --workspace $AEROSPACE_FOCUSED_MONITOR_NO | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+source "$HOME/.config/sketchybar/colors.sh"
 
-if [ "$SENDER" = "front_app_switched" ]; then
-  sketchybar --set "$NAME" label="$INFO" icon.background.image="app.$INFO" icon.background.image.scale=0.8
+FRONT_APP=$(aerospace list-windows --focused --format '%{app-name}' 2>/dev/null | head -n1)
 
-  apps=$AEROSPACE_LIST_OF_WINDOWS_IN_FOCUSED_MONITOR
-  icon_strip=" "
-  if [ "${apps}" != "" ]; then
-    while read -r app
-    do
-      icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
-    done <<< "${apps}"
-  else
-    icon_strip=" —"
-  fi
-  sketchybar --set space.$AEROSPACE_FOCUSED_MONITOR_NO label="$icon_strip"
+if [ -z "$FRONT_APP" ]; then
+  FRONT_APP=$(osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true' 2>/dev/null)
 fi
+
+# Final fallback
+if [ -z "$FRONT_APP" ]; then
+  FRONT_APP="Desktop"
+fi
+
+sketchybar --set "$NAME" label="$FRONT_APP" label.color=$GREEN
