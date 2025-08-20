@@ -119,6 +119,9 @@ function __icon_map() {
         "TG Pro")
             icon_result=":gear:"
             ;;
+        "VMware Fusion")
+        icon_result=":vmware_fusion:"
+        ;;
         "Weather")
             icon_result=":weather:"
             ;;
