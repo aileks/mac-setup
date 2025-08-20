@@ -50,9 +50,6 @@ function __icon_map() {
         "Keynote")
             icon_result=":keynote:"
             ;;
-        "LuLu")
-            icon_result=":firewall:"
-            ;;
         "Maps")
             icon_result=":maps:"
             ;;
