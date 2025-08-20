@@ -38,6 +38,9 @@ function __icon_map() {
     "Freeform")
         icon_result=":freeform:"
         ;;
+    "FreeTube")
+        icon_result=":freetube:"
+        ;;
     "System Preferences" | "System Settings")
         icon_result=":gear:"
         ;;
@@ -101,8 +104,8 @@ function __icon_map() {
     "Signal")
         icon_result=":signal:"
         ;;
-    "Spotlight")
-        icon_result=":spotlight:"
+    "Steam" | "Steam Helper")
+        icon_result=":steam:"
         ;;
     "Terminal")
         icon_result=":terminal:"
