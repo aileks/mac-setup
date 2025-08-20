@@ -32,6 +32,9 @@ function __icon_map() {
         "Finder")
             icon_result=":finder:"
             ;;
+        "Firefox" | "Firefox Developer Edition")
+            icon_result=":firefox:"
+            ;;
         "Freeform")
             icon_result=":freeform:"
             ;;
