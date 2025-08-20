@@ -5,9 +5,6 @@ function __icon_map() {
         "Activity Monitor")
             icon_result=":activity_monitor:"
             ;;
-        "App Eraser" | "AppCleaner")
-            icon_result=":app_eraser:"
-            ;;
         "App Store")
             icon_result=":app_store:"
             ;;
@@ -53,6 +50,9 @@ function __icon_map() {
         "Keynote")
             icon_result=":keynote:"
             ;;
+        "LuLu")
+            icon_result=":firewall:"
+            ;;
         "Maps")
             icon_result=":maps:"
             ;;
@@ -73,6 +73,9 @@ function __icon_map() {
             ;;
         "Passwords")
             icon_result=":passwords:"
+            ;;
+        "Pearcleaner")
+            icon_result=":pearcleaner:"
             ;;
         "Preview")
             icon_result=":pdf:"
