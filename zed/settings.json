@@ -1,5 +1,9 @@
 {
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "o4-mini"
+    },
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"

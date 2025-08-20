@@ -4,6 +4,11 @@ source "$CONFIG_DIR/colors.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 
+HELPER=git.felix.helper
+killall helper
+(cd $CONFIG_DIR/helper && make)
+$CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
+
 bar=(
     height=32
     position=top
