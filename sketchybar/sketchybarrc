@@ -4,11 +4,6 @@ source "$CONFIG_DIR/colors.sh"
 
 ITEM_DIR="$CONFIG_DIR/items"
 
-HELPER=git.felix.helper
-killall helper
-(cd $CONFIG_DIR/helper && make)
-$CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
-
 bar=(
     height=32
     position=top
@@ -50,8 +45,6 @@ source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/brew.sh"
-source "$ITEM_DIR/ram.sh"
-source "$ITEM_DIR/cpu.sh"
 
 sketchybar --trigger aerospace_workspace_change
 
