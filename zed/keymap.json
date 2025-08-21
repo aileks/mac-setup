@@ -12,19 +12,19 @@
       "space c": "command_palette::Toggle",
       "space d": "diagnostics::Deploy",
       "space a": "agent::ToggleFocus",
-      "space r": "editor::Rename"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
+      "space r": "editor::Rename",
+      "space b": "git::Blame",
+      "space g a": "git::StageAll",
+      "space g c": "git::Commit",
+      "space g p": "git::Push",
+      "space g l": "git::Pull",
+      "space g d": "git::Diff",
+      "space g b": "git::Branch",
+      "space g t": "git::StashAll",
+      "space g T": "git::StashPop",
+      "space g u": "git::Restore",
       "g u": "editor::UndoSelection",
-      "g r": "editor::RedoSelection"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
+      "g r": "editor::RedoSelection",
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
@@ -32,16 +32,20 @@
       "ctrl-w v": "pane::SplitRight",
       "ctrl-w s": "pane::SplitDown",
       "ctrl-w q": "pane::CloseActiveItem",
-      "ctrl-w o": "workspace::CloseInactiveTabsAndPanes"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
+      "ctrl-w o": "workspace::CloseInactiveTabsAndPanes",
       "g t": "pane::ActivateNextItem",
       "g T": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
       "shift-h": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "g w": "vim::NextSubwordStart",
+      "g b": "vim::PreviousSubwordStart",
+      "g e": "vim::NextSubwordEnd",
+      "g shift-e": "vim::PreviousSubwordEnd"
     }
   },
   {
@@ -62,7 +66,9 @@
         "workspace::SendKeystrokes",
         "ctrl-u z z"
       ],
-      "g y y": "editor::DuplicateLineDown"
+      "g y y": "editor::DuplicateLineDown",
+      "g *": "search::SelectNextMatch",
+      "g #": "search::SelectPreviousMatch"
     }
   },
   {
@@ -84,15 +90,15 @@
       "ctrl-x ctrl-a": "assistant::InlineAssist",
       "ctrl-x ctrl-l": "editor::ToggleCodeActions",
       "ctrl-x ctrl-z": "editor::Cancel",
-      "ctrl-h": "editor::Backspace",
-      "ctrl-w": "editor::DeleteToPreviousWordStart",
-      "ctrl-u": "editor::DeleteToBeginningOfLine",
-      "ctrl-a": "editor::MoveToBeginningOfLine",
-      "ctrl-e": "editor::MoveToEndOfLine",
-      "ctrl-f": "editor::MoveRight",
-      "ctrl-b": "editor::MoveLeft",
-      "ctrl-d": "editor::Delete",
-      "ctrl-k": "editor::DeleteToEndOfLine"
+      "cmd-h": "editor::Backspace",
+      "cmd-w": "editor::DeleteToPreviousWordStart",
+      "cmd-u": "editor::DeleteToBeginningOfLine",
+      "cmd-a": "editor::MoveToBeginningOfLine",
+      "cmd-e": "editor::MoveToEndOfLine",
+      "cmd-f": "editor::MoveRight",
+      "cmd-b": "editor::MoveLeft",
+      "cmd-d": "editor::Delete",
+      "cmd-k": "editor::DeleteToEndOfLine"
     }
   },
   {
@@ -105,38 +111,13 @@
     }
   },
   {
-    "context": "VimControl && !menu && vim_mode != operator",
-    "bindings": {
-      "g w": "vim::NextSubwordStart",
-      "g b": "vim::PreviousSubwordStart",
-      "g e": "vim::NextSubwordEnd",
-      "g shift-e": "vim::PreviousSubwordEnd"
-    }
-  },
-  {
-    "context": "vim_mode == normal && !menu",
-    "bindings": {
-      "g *": "search::SelectNextMatch",
-      "g #": "search::SelectPreviousMatch"
-    }
-  },
-  {
-    "context": "Dock",
+    "context": "Dock || Terminal",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-w q": "workspace::CloseActiveDock"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
+      "ctrl-x": "workspace::CloseActiveDock"
     }
   },
   {
