@@ -2,7 +2,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gemini-2.5-pro"
+      "model": "claude-sonnet-4"
     },
     "always_allow_tool_actions": true
   },
@@ -22,10 +22,10 @@
   "autosave": "on_focus_change",
   "format_on_save": "on",
   "formatter": "language_server",
-  "ui_font_size": 16,
+  "ui_font_size": 18,
   "ui_font_family": "SF Pro",
-  "agent_font_size": 16,
-  "buffer_font_size": 16,
+  "agent_font_size": 22,
+  "buffer_font_size": 18,
   "buffer_font_family": "AdwaitaMono Nerd Font Mono",
   "buffer_line_height": "standard",
   "preferred_line_length": 100,
