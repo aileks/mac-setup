@@ -1,11 +1,177 @@
 [
   {
-    "context": "Editor && !VimControl",
+    "context": "VimControl && !menu",
     "bindings": {
-      "cmd-up": "editor::MoveToStartOfParagraph",
-      "cmd-down": "editor::MoveToEndOfParagraph",
-      "cmd-j": "editor::JoinLines",
-      "alt-k": "editor::SplitSelectionIntoLines"
+      "space f": "file_finder::Toggle",
+      "space p": "project_panel::ToggleFocus",
+      "space t": "terminal_panel::ToggleFocus",
+      "space /": "pane::DeploySearch",
+      "space e": "project_panel::ToggleFocus",
+      "space o": "outline::Toggle",
+      "space s": "project_symbols::Toggle",
+      "space c": "command_palette::Toggle",
+      "space d": "diagnostics::Deploy",
+      "space a": "agent::ToggleFocus",
+      "space r": "editor::Rename"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g u": "editor::UndoSelection",
+      "g r": "editor::RedoSelection"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-w v": "pane::SplitRight",
+      "ctrl-w s": "pane::SplitDown",
+      "ctrl-w q": "pane::CloseActiveItem",
+      "ctrl-w o": "workspace::CloseInactiveTabsAndPanes"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g t": "pane::ActivateNextItem",
+      "g T": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "shift-y": [
+        "workspace::SendKeystrokes",
+        "y $"
+      ],
+      "shift-j": "editor::JoinLines",
+      "shift-z shift-z": "workspace::Save",
+      "shift-z shift-q": "pane::CloseActiveItem",
+      "ctrl-d": [
+        "workspace::SendKeystrokes",
+        "ctrl-d z z"
+      ],
+      "ctrl-u": [
+        "workspace::SendKeystrokes",
+        "ctrl-u z z"
+      ],
+      "g y y": "editor::DuplicateLineDown"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g c": "editor::ToggleComments",
+      ">": "editor::Indent",
+      "<": "editor::Outdent",
+      "shift-s": "vim::PushAddSurrounds",
+      "g shift-a": "editor::SplitSelectionIntoLines"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+      "k j": "vim::NormalBefore",
+      "ctrl-x ctrl-o": "editor::ShowCompletions",
+      "ctrl-x ctrl-a": "assistant::InlineAssist",
+      "ctrl-x ctrl-l": "editor::ToggleCodeActions",
+      "ctrl-x ctrl-z": "editor::Cancel",
+      "ctrl-h": "editor::Backspace",
+      "ctrl-w": "editor::DeleteToPreviousWordStart",
+      "ctrl-u": "editor::DeleteToBeginningOfLine",
+      "ctrl-a": "editor::MoveToBeginningOfLine",
+      "ctrl-e": "editor::MoveToEndOfLine",
+      "ctrl-f": "editor::MoveRight",
+      "ctrl-b": "editor::MoveLeft",
+      "ctrl-d": "editor::Delete",
+      "ctrl-k": "editor::DeleteToEndOfLine"
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::AnyQuotes",
+      "Q": "vim::MiniQuotes",
+      "b": "vim::AnyBrackets",
+      "B": "vim::MiniBrackets",
+      "a": "vim::Argument",
+      "c": "vim::Class",
+      "I": "vim::Indent"
+    }
+  },
+  {
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "g w": "vim::NextSubwordStart",
+      "g b": "vim::PreviousSubwordStart",
+      "g e": "vim::NextSubwordEnd",
+      "g shift-e": "vim::PreviousSubwordEnd"
+    }
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "g *": "search::SelectNextMatch",
+      "g #": "search::SelectPreviousMatch"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-w q": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "d": [
+        "project_panel::Trash",
+        {
+          "skip_prompt": false
+        }
+      ],
+      "shift-d": [
+        "project_panel::Delete",
+        {
+          "skip_prompt": false
+        }
+      ],
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f": "file_finder::Toggle",
+      "space p": "project_panel::ToggleFocus",
+      "space t": "terminal_panel::ToggleFocus",
+      "space /": "pane::DeploySearch"
     }
   }
 ]

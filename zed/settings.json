@@ -119,5 +119,32 @@
       "min_column": 60,
       "max_severity": "warning"
     }
+  },
+  "scrollbar": {
+    "show": "auto"
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+    "highlight_on_yank_duration": 150
+  },
+  "cursor_blink": false,
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 8,
+  "command_aliases": {
+    "W": "w",
+    "Wq": "wq",
+    "WQ": "wq",
+    "Q": "q",
+    "Qa": "qa",
+    "QA": "qa"
+  },
+  "multi_cursor_modifier": "alt",
+  "search": {
+    "whole_word": false,
+    "case_sensitive": false,
+    "include_ignored": false
   }
 }

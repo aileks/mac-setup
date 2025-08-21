@@ -5,36 +5,36 @@ source "$CONFIG_DIR/colors.sh"
 ITEM_DIR="$CONFIG_DIR/items"
 
 bar=(
-    height=36
-    position=top
-    shadow=off
-    sticky=off
-    padding_left=4
-    padding_right=4
-    color=$BAR_COLOR
-    border_color=$BAR_BORDER_COLOR
-    border_width=2
-    corner_radius=10
-    blur_radius=30
-    margin=4
-    y_offset=4
+  height=36
+  position=top
+  shadow=off
+  sticky=off
+  padding_left=4
+  padding_right=4
+  color=$BAR_COLOR
+  border_color=$BAR_BORDER_COLOR
+  border_width=2
+  corner_radius=10
+  blur_radius=30
+  margin=4
+  y_offset=4
 )
 
 sketchybar --bar "${bar[@]}"
 
 default=(
-    padding_left=4
-    padding_right=4
-    icon.font="sketchybar-app-font:Regular:18"
-    label.font="AdwaitaMono Nerd Font Propo:Bold:20"
-    icon.color=$ICON_COLOR
-    label.color=$LABEL_COLOR
-    icon.padding_left=4
-    icon.padding_right=4
-    label.padding_left=4
-    label.padding_right=4
-    background.corner_radius=8
-    background.height=24
+  padding_left=4
+  padding_right=4
+  icon.font="sketchybar-app-font:Regular:16"
+  label.font="AdwaitaMono Nerd Font Propo:Bold:18"
+  icon.color=$ICON_COLOR
+  label.color=$LABEL_COLOR
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+  background.corner_radius=8
+  background.height=24
 )
 
 sketchybar --default "${default[@]}"
