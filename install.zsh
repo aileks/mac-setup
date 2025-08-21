@@ -125,7 +125,10 @@ install_homebrew() {
 install_cli_tools() {
     show_progress "Installing command line tools"
 
-    local cli_tools=(curl wget tmux mise ripgrep sketchybar fzf trash-cli fastfetch tree btop jq gh bash eza zoxide)
+    local cli_tools=(
+        curl wget tmux mise ripgrep sketchybar fzf trash-cli
+        fastfetch tree btop jq gh bash eza zoxide bat
+    )
     local failed_installs=()
 
     for tool in "${cli_tools[@]}"; do
@@ -205,9 +208,10 @@ install_gui_apps() {
     show_progress "Installing GUI applications"
 
     local cask_apps=(
-        "tg-pro" "element" "ghostty" "zed" "aerospace" "deezer" "freetube"
-        "protonvpn" "proton-mail" "proton-drive" "brave-browser" "notesnook"
-        "font-adwaita" "font-adwaita-mono-nerd-font"
+        tg-pro element ghostty zed aerospace deezer freetube
+        protonvpn proton-mail proton-drive brave-browser notesnook
+        font-adwaita font-adwaita-mono-nerd-font karabiner-elements
+        pearcleaner lulu zoom
     )
     local failed_installs=()
 
