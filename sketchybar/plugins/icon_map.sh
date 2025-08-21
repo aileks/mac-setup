@@ -50,6 +50,9 @@ function __icon_map() {
         "iPhone Mirroring")
             icon_result=":iphone_mirroring:"
             ;;
+        "Karabiner-Elements")
+            icon_result=":keyboard:"
+            ;;
         "Keynote")
             icon_result=":keynote:"
             ;;

@@ -101,10 +101,7 @@
       "q": "vim::AnyQuotes",
       "Q": "vim::MiniQuotes",
       "b": "vim::AnyBrackets",
-      "B": "vim::MiniBrackets",
-      "a": "vim::Argument",
-      "c": "vim::Class",
-      "I": "vim::Indent"
+      "B": "vim::MiniBrackets"
     }
   },
   {
