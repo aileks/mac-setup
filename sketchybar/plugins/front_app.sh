@@ -15,7 +15,7 @@ if [ -z "$APP_NAME" ]; then
 fi
 
 sketchybar --set "$NAME" icon="􀢌" \
-                         icon.font="SF Pro:SemiBold:16" \
+                         icon.font="SF Pro:SemiBold:14" \
                          icon.color="$FG2" \
                          icon.padding_left=8 \
                          label="$APP_NAME" \

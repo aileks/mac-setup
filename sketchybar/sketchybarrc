@@ -25,8 +25,8 @@ sketchybar --bar "${bar[@]}"
 default=(
   padding_left=4
   padding_right=4
-  icon.font="sketchybar-app-font:Regular:16"
-  label.font="AdwaitaMono Nerd Font Propo:Bold:18"
+  icon.font="sketchybar-app-font:Regular:14"
+  label.font="AdwaitaMono Nerd Font Propo:Bold:14"
   icon.color=$ICON_COLOR
   label.color=$LABEL_COLOR
   icon.padding_left=4
