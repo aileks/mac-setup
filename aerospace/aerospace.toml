@@ -32,8 +32,8 @@ outer.top = 46
 outer.right = 6
 
 [mode.main.binding]
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+cmd-alt-ctrl-slash = 'layout tiles horizontal vertical'
+cmd-alt-ctrl-comma = 'layout accordion horizontal vertical'
 
 cmd-alt-ctrl-h = 'focus left'
 cmd-alt-ctrl-j = 'focus down'
@@ -65,18 +65,18 @@ cmd-alt-ctrl-shift-7 = 'move-node-to-workspace 7'
 cmd-alt-ctrl-shift-8 = 'move-node-to-workspace 8'
 cmd-alt-ctrl-shift-9 = 'move-node-to-workspace 9'
 
-alt-t = 'exec-and-forget open -a "Ghostty"'
-alt-f = 'exec-and-forget open -a "Finder"'
-alt-w = 'exec-and-forget open -a "Brave Browser"'
-alt-z = 'exec-and-forget open -a "Zed"'
-alt-y = 'exec-and-forget open -a "FreeTube"'
-alt-s = 'exec-and-forget open -a "Signal"'
-alt-m = 'exec-and-forget open -a "Deezer"'
-alt-d = 'exec-and-forget open -a "Element"'
-alt-n = 'exec-and-forget open -a "Notesnook"'
+cmd-alt-ctrl-t = 'exec-and-forget open -a "Ghostty"'
+cmd-alt-ctrl-f = 'exec-and-forget open -a "Finder"'
+cmd-alt-ctrl-w = 'exec-and-forget open -a "Brave Browser"'
+cmd-alt-ctrl-z = 'exec-and-forget open -a "Zed"'
+cmd-alt-ctrl-y = 'exec-and-forget open -a "FreeTube"'
+cmd-alt-ctrl-s = 'exec-and-forget open -a "Signal"'
+cmd-alt-ctrl-m = 'exec-and-forget open -a "Deezer"'
+cmd-alt-ctrl-d = 'exec-and-forget open -a "Element"'
+cmd-alt-ctrl-n = 'exec-and-forget open -a "Notesnook"'
 
-alt-shift-r = 'mode resize'
-alt-shift-semicolon = 'mode service'
+cmd-alt-ctrl-r = 'mode resize'
+cmd-alt-ctrl-semicolon = 'mode service'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
