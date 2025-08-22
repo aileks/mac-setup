@@ -74,6 +74,9 @@ function __icon_map() {
         "Pages")
             icon_result=":pages:"
             ;;
+        "Parallels Desktop")
+            icon_result=":parallels:"
+            ;;
         "Passwords")
             icon_result=":passwords:"
             ;;
