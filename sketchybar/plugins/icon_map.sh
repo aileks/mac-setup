@@ -81,7 +81,7 @@ function __icon_map() {
             icon_result=":pearcleaner:"
             ;;
         "Preview")
-            icon_result=":pdf:"
+            icon_result=":preview:"
             ;;
         "Photos" | "Photo Booth")
             icon_result=":photos:"
