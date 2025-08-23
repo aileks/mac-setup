@@ -2,6 +2,9 @@
 
 function __icon_map() {
     case "$1" in
+        "1Password")
+            icon_result=":one_password:"
+            ;;
         "Activity Monitor")
             icon_result=":activity_monitor:"
             ;;
