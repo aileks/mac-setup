@@ -29,7 +29,7 @@ for sid in $(aerospace list-workspaces --all); do
                                         background.drawing=on \
                                         icon=$sid \
                                         label=$ICON \
-                                        label.font="sketchybar-app-font:Regular:16" \
+                                        label.font="sketchybar-app-font:Regular:14" \
                                         icon.font="AdwaitaMono Nerd Font Propo:Bold:14" \
                                         label.color=$MAGENTA \
                                         icon.color=$LABEL_COLOR
@@ -38,7 +38,7 @@ for sid in $(aerospace list-workspaces --all); do
                                         background.drawing=off \
                                         icon=$sid \
                                         label=$ICON \
-                                        label.font="sketchybar-app-font:Regular:16" \
+                                        label.font="sketchybar-app-font:Regular:14" \
                                         icon.font="AdwaitaMono Nerd Font Propo:Bold:14" \
                                         icon.color=$BG3 \
                                         label.color=$BG4
