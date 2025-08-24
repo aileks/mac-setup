@@ -67,7 +67,7 @@ cmd-alt-ctrl-shift-9 = 'move-node-to-workspace 9'
 
 cmd-alt-ctrl-t = 'exec-and-forget open -a Ghostty'
 cmd-alt-ctrl-f = 'exec-and-forget open -a Finder'
-cmd-alt-ctrl-w = 'exec-and-forget open -a Safari'
+cmd-alt-ctrl-w = 'exec-and-forget open -a "Brave Browser"'
 cmd-alt-ctrl-z = 'exec-and-forget open -a Zed'
 cmd-alt-ctrl-y = 'exec-and-forget open -a FreeTube'
 cmd-alt-ctrl-s = 'exec-and-forget open -a Signal'
