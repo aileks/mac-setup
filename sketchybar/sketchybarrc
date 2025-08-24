@@ -45,6 +45,7 @@ source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/brew.sh"
+source "$ITEM_DIR/weather.sh"
 
 sketchybar --trigger aerospace_workspace_change
 
