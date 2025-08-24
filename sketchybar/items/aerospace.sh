@@ -9,8 +9,10 @@ for sid in $(aerospace list-workspaces --all); do
   sketchybar --add item space.$sid left \
              --set space.$sid \
              background.color=$BG1 \
+             label.padding_left=4 \
              label.padding_right=8 \
              icon.padding_left=8 \
+             icon.padding_right=4 \
              drawing=off \
              click_script="aerospace workspace $sid"
 done
