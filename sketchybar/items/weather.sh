@@ -10,5 +10,6 @@ sketchybar --add item weather right \
     icon.color=$BLUE \
     icon.font="AdwaitaMono Nerd Font Propo:Bold:14" \
     update_freq=1800 \
+    background.color=$BG1 \
     script="$PLUGIN_DIR/weather.sh" \
     --subscribe weather system_woke
